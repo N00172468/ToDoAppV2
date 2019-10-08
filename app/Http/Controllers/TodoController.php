@@ -3,7 +3,7 @@
 # @Date:   2019-10-01T14:33:57+01:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-10-08T13:30:16+01:00
+# @Last modified time: 2019-10-08T14:48:34+01:00
 
 
 
@@ -22,7 +22,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = ToDo::orderBy('created_at', 'desc')->paginate(8);
+        $todos = ToDo::orderBy('created_at', 'asc')->paginate(3);
         return view('todos.index', [
           'todos' => $todos,
         ]);
@@ -143,5 +143,10 @@ class TodoController extends Controller
         return redirect()
         ->route('todos.index')
         ->with('status','Deleted the selected Todo!');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
     }
 }
