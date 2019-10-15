@@ -3,7 +3,7 @@
 # @Date:   2019-10-01T14:18:04+01:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-10-08T15:35:17+01:00
+# @Last modified time: 2019-10-15T14:17:04+01:00
 
 
 
@@ -19,11 +19,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('todos.index');
-});
+// Route::get('/', function () {
+//     return view('todos.index');
+// });
 
-Route::get('/','TodoController@index')->name('todos.index');
+Route::get('/todos','TodoController@index')->name('todos.index');
 Route::get('/todos/create','TodoController@create')->name('todos.create');
 Route::post('/todos','TodoController@store')->name('todos.store');
 Route::get('/todos/{id}','TodoController@show')->name('todos.show');
@@ -31,6 +31,11 @@ Route::get('/todos/{id}/edit','TodoController@edit')->name('todos.edit');
 Route::put('/todos/{id}','TodoController@update')->name('todos.update');
 Route::delete('/todos/{id}','TodoController@destroy')->name('todos.destroy');
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+// Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile','ProfileController@index')->name('profile.index');
+Route::get('/profile','ProfileController@update')->name('profile.update');
