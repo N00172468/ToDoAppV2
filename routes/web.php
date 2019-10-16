@@ -3,7 +3,7 @@
 # @Date:   2019-10-01T14:18:04+01:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-10-15T14:17:04+01:00
+# @Last modified time: 2019-10-15T16:48:56+01:00
 
 
 
@@ -19,9 +19,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('todos.index');
-// });
+Route::get('/', function () {
+    return redirect('/todos');
+});
 
 Route::get('/todos','TodoController@index')->name('todos.index');
 Route::get('/todos/create','TodoController@create')->name('todos.create');
@@ -38,4 +38,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile','ProfileController@index')->name('profile.index');
-Route::get('/profile','ProfileController@update')->name('profile.update');
+Route::put('/profile','ProfileController@update')->name('profile.update');

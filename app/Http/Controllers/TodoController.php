@@ -3,7 +3,7 @@
 # @Date:   2019-10-01T14:33:57+01:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-10-15T13:36:27+01:00
+# @Last modified time: 2019-10-15T16:38:54+01:00
 
 
 
@@ -16,6 +16,9 @@ use Auth;
 
 class TodoController extends Controller
 {
+    public function __construct() {
+      $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -149,13 +152,13 @@ class TodoController extends Controller
         ->with('status','Deleted the selected Todo!');
     }
 
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
-    public function user()
-    {
-      return $this->belongsTo('App\User');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest')->except('logout');
+    // }
+    //
+    // public function user()
+    // {
+    //   return $this->belongsTo('App\User');
+    // }
 }

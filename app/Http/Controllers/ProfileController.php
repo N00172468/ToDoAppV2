@@ -3,7 +3,7 @@
 # @Date:   2019-10-15T14:21:40+01:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-10-15T14:55:35+01:00
+# @Last modified time: 2019-10-15T15:24:31+01:00
 
 
 
@@ -11,7 +11,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 
 use Auth;
 use Hash;
@@ -27,7 +27,7 @@ class ProfileController extends Controller
       return view('user.profile');
     }
 
-    public update(){
+    public function update(Request $request){
       $rules = [
         'name' => 'required|string|min:3|max:191',
         'email' => 'required|email|min:3|max:191',
@@ -44,7 +44,7 @@ class ProfileController extends Controller
         $image = $request->image;
         $ext = $image->getClientOriginalExtension();
         $filename = uniqid().'.'.$ext;
-        
+
         $image->storeAs('public/images',$filename);
         Storage::delete("public/images/{$user->image}");
         $user->image = $filename;

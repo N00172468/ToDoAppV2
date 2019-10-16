@@ -17,6 +17,6 @@
         @endforelse
     </ul>
     <div class="d-flex justify-content-center">
-        {{ $todos->links() }}
+        {{ $todos ?? ''->links() }}
     </div>
 @endsection
